@@ -4,10 +4,11 @@ import task_1.frontier as frontier
 
 def search(n):
     s=state.create(n)
-    print(s)
+    # print(s)
     f=frontier.create(s)
     while not frontier.is_empty(f):
         s=frontier.remove(f)
+        print(s)
         if state.is_target(s):
             return s
         ns=state.get_next(s)
@@ -16,5 +17,7 @@ def search(n):
                 return i
             frontier.insert(f,i)
     return 0
+
+
 
 print(search([1,2,5,10]))
