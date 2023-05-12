@@ -114,6 +114,7 @@ def isFinished(s):
 
     if not anyLegalMove(s):
         s[3] = True
+        s[1] = whoWin(s)
     return s[3]
 
 def isLegal(move, s):
