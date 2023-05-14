@@ -1,3 +1,15 @@
+# BY: Tal Rodgold & Binyamin Mor
+# ID: 318162344 & 317510485
+
+'''
+The state of the game is represented by a list of 4 items:
+0. The game board - a matrix (list of lists) of ints. Empty cells = 0,
+   the comp's cells = COMPUTER and the human's = HUMAN
+1. The heuristic value of the state.
+2. Who's turn is it: HUMAN or COMPUTER
+3. flag to end game
+
+'''
 import copy
 EMPTY, BLACK, WHITE = '.', '●', '○'
 HUMAN, COMPUTER = '●', '○'
@@ -76,17 +88,16 @@ def inputMove(s):
             makeMove(move,s)
 
 
-'''
-The state of the game is represented by a list of 4 items:
-0. The game board - a matrix (list of lists) of ints. Empty cells = 0,
-   the comp's cells = COMPUTER and the human's = HUMAN
-1. The heuristic value of the state.
-2. Who's turn is it: HUMAN or COMPUTER
-3. flag to end game
-
-'''
-
 def value(s):
+    """The heuristic of this function is based on the difference between the number of pieces owned by the computer player
+    and the number of pieces owned by the human player.
+    The function counts the number of pieces for each player and returns the difference between them.
+    In other words, the function assigns a score to the current state of the board based on the number of pieces each player has.
+    If the computer player has more pieces than the human player, the score will be positive, indicating a favorable position
+    for the computer player. Conversely, if the human player has more pieces than the computer player, the score will be negative,
+    indicating a favorable position for the human player.
+    This heuristic is a simple but effective way to evaluate the relative strength of each player's position on the board.
+    The heuristic does not take in to account the location of the pieces (such as borders or corners) and gives them all the same score of 1 """
     # Initialize the values for each player
     humanValue = 0
     computerValue = 0
